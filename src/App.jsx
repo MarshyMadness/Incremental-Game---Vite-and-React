@@ -11,6 +11,7 @@ import MainInteract from './MainInteract'
 import { useSetState } from '@mantine/hooks'
 import {TimerApp, MyTimer} from "./Timer.jsx"
 import FoodPerClickUpgrade from "./buttons/foodPerClickUpgrade.jsx"
+import ReactTooltip from 'react-tooltip'
 
 window.addEventListener('load', (event) => {
   FixBorder();
@@ -36,11 +37,13 @@ export function App() {
 		setGameData((gameData) = ({
 			GameVersion: "v0.0.6",
 			foodAmount: 0,
-			foodPerClick: 25,
+			foodPerClick: 1,
 			foodPerClickCost: 25,
 			foodPerClickUpgradeNum: 0,
+			FoodMultiplier: 0,
+			FoodAutomateSpeed: 0,
 			wood: 0,
-			woodPerClick: 25,
+			woodPerClick: 1,
 			woodPerClickCost: 25,
 			copper: 0,
 			copperPerClick: 1,
@@ -51,29 +54,33 @@ export function App() {
 			bronzePerClickUpgradeNum: 0,
 			TotalTime: 0,
 			TotalTimeString: 0
+			
 		}))
 	}
 
 }, [])
 
-var x = 0;
-
-
+let BaseFoodMultiplier = 0;
 
 
 	useEffect(() => {   
 		
 		let interval= setInterval(() => {
-		
 
 			var prevfoodamount = gameData.foodAmount;
-			setGameData(prevData => ({ ...prevData, foodAmount: prevData.foodAmount + x}))
-		
+			var prevFoodMultiplier = gameData.FoodMultiplier;
+			setGameData(prevData => ({ ...prevData, foodAmount: prevData.foodAmount + gameData.FoodMultiplier}))
 
-			return () => { clearInterval(interval); };
+			if (gameData.foodPerClickUpgradeNum === 0){
+				setGameData(prevData => ({ ...prevData, FoodMultiplier: 0}))
 
-   }, 1000)
-	}, [])
+			}
+			else if(gameData.foodPerClickUpgradeNum === 1){
+				setGameData(prevData => ({ ...prevData, FoodMultiplier: 0}))
+			}
+	}, 1000)
+   return () => { clearInterval(interval); };
+	}, [gameData.foodAmount])
 
 
     
@@ -181,7 +188,7 @@ var x = 0;
 
 
 	<ResourceTable gameData={gameData}/>
-	<MainInteract gameData={gameData}/>
+	<MainInteract gameData={gameData} setGameData={setGameData}/>
 </>
   )
 

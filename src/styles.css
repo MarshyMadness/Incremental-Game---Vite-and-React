@@ -262,14 +262,11 @@
 
 		}
 
-		.Hidden{
-		display: none;
-		}
+	
 
 		.tab > .Hidden{
 		display: none;
 		}
-
 
 
 
@@ -286,9 +283,9 @@
 		}
 
 		#BuildingsContainer{
-			background-color:grey;
+			background-color:green;
 			text-align: left;
-			height:40rem;
+			height:100%;
 			flex-direction: row;
 		}
 
@@ -335,25 +332,7 @@
 		  flex: 1;
 		}
 
-		.MainInteract{
-			position: fixed;
-			top: 9rem;
-			margin: -21rem 0 0 -20.9rem;
-			bottom: auto;
-			
-			display:flex;
-
-			align-items: center;
-			justify-content: center;
-
-			border-style: solid;
-			border-color: black;
-			border-width: thick;
-			text-align: center;
-			width: 41.8rem;
-			height: 42rem;
-			z-index: 1000;
-		}
+	
 
 		#TimeStateButtonContainer{
 			display: inline-flex;
@@ -580,6 +559,7 @@
 		}
 
 		.close{
+			margin-top: -0.5rem;
 			display: inline-flex;
 		}
 
@@ -590,4 +570,49 @@
 			background-color: green;
 		}
 
+		#BuildingsHeaderContainer{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			background-color: green;
+		}
+
 		
+		#BuildingsButtonsContainer{
+			display: flex;
+			margin-top: 1rem;
+			flex-direction: row;
+			justify-content: stretch;
+			align-items: stretch;
+			background-color: green;
+			height: 100%;
+		}
+
+		.MainInteract{
+			position: fixed;
+			top: 9rem;
+			bottom: auto;
+
+			margin: 0 0 0 38rem;
+			
+
+			display:block;
+			align-items: center;
+			justify-content: center;
+
+			border-style: solid;
+			border-color: black;
+			border-width: thick;
+			text-align: center;
+			width: 41.8rem;
+			height: 42rem;
+			z-index: 1000;
+		}
+
+		.Hidden{
+			display: none;
+			}
+
+		.tabTitle, .close{
+			font-size: 2rem;
+		}

@@ -1,4 +1,4 @@
-import {Gather, Gathers, gameData, startingGameData, save, load, ClearSave} from "./maindata.js"
+import {Gather, Gathers, gameData, startingGameData, save, load, ClearSave} from "./maindata.js" 
 import React from "react"
 
 export function SaveButton() {
@@ -80,8 +80,8 @@ export function BuildingsButton(){
       el.classList.remove("visibleblock");
       });
   document.getElementById('MainInteract').classList.remove("Hidden");
-  document.getElementById('Buildings').classList.remove("Hidden");
   document.getElementById('BuildingsButton').classList.add("active");
+  document.getElementById('BuildingsContainer').classList.remove("Hidden");
   document.getElementById('PeopleButton').classList.remove("active");
 }
 export function GatherButton() {
