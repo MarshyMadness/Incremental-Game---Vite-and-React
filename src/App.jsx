@@ -5,7 +5,7 @@ import './App.css'
 import {Gather} from "./maindata.js"
 import {Time, FixBorder} from "./maindata.js"
 import * as Buttons from "./Buttons.jsx"
-import useKeypress from './hooks/useKeypress'
+import useKeyPress from './hooks/useKeyPress'
 import ResourceTable from "./ResourceTable"
 import MainInteract from './MainInteract'
 import { useSetState } from '@mantine/hooks'
@@ -86,7 +86,7 @@ let BaseFoodMultiplier = 0;
     
 
 
-    useKeypress('Escape', () => {
+    useKeyPress('Escape', () => {
     	Buttons.CloseButton();
     });
 
