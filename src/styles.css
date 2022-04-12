@@ -336,11 +336,15 @@
 		}
 
 		.MainInteract{
-			position: absolute;
+			position: fixed;
 			top: 9rem;
-			left: auto;
-			right: auto;
+			margin: -21rem 0 0 -20.9rem;
 			bottom: auto;
+			
+			display:flex;
+
+			align-items: center;
+			justify-content: center;
 
 			border-style: solid;
 			border-color: black;

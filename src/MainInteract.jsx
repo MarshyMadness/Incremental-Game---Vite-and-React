@@ -1,5 +1,6 @@
 import React from 'react'
 import * as Buttons from "./Buttons.jsx"
+import './styles.css'
 
 export default function MainInteract( {gameData} ) {
   return (
