@@ -7,6 +7,7 @@ import {Time, FixBorder} from "./maindata.js"
 import * as Buttons from "./Buttons.jsx"
 import useKeypress from './hooks/useKeypress'
 import ResourceTable from "./ResourceTable"
+import MainInteract from './MainInteract'
 import { useSetState } from '@mantine/hooks'
 import {TimerApp, MyTimer} from "./Timer.jsx"
 import FoodPerClickUpgrade from "./buttons/foodPerClickUpgrade.jsx"
@@ -180,7 +181,7 @@ var x = 0;
 
 
 	<ResourceTable gameData={gameData}/>
-	<FoodPerClickUpgrade gameData={gameData}/>
+	<MainInteract gameData={gameData}/>
 </>
   )
 

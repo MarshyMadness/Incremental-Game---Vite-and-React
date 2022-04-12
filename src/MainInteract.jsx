@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Buttons from "./Buttons.jsx"
 
-export default function MainInteract() {
+export default function MainInteract( {gameData} ) {
   return (
     <div id="MainInteract" className="MainInteract Hidden">
 
@@ -61,7 +61,7 @@ export default function MainInteract() {
           <div className="GatherResource-container">
           <div className="resource-container">
             <button className="ResourceButtons flex-parent" id="gatherFoodButton" onClick={() => setGameData(prevData => ({ ...prevData, foodAmount: prevData.foodAmount + 1}))}>Gather Food</button>
-            <button id="foodPerClickUpgrade Hidden" onClick={FoodPerClickUpgrade}>Upgrade Hatchet (Currently Level 1) Cost: 25 wood</button>
+            <button id="foodPerClickUpgrade Hidden">Upgrade Hatchet (Currently Level 1) Cost: 25 wood</button>
           </div>
 
           <div className="resource-container">
