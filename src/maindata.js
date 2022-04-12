@@ -39,6 +39,11 @@ export var gameData = {
 			TotalTime: 0
 		};
 
+		if (gameData == null){
+			gameData = startingGameData;
+
+		}
+
 
 	export var Time = gameData.TotalTime;
 
@@ -151,11 +156,6 @@ export var gameData = {
 
 */
 export class Gather {
-	gatherFood() {
-		  gameData.foodAmount += gameData.foodPerClick;
-		//  document.getElementById("foodGathered").innerHTML = gameData.foodAmount
-		//  document.getElementById("foodPerClickUpgrade").innerHTML = "Upgrade Gathering (Currently Level " + gameData.foodPerClickUpgradeNum + ") Cost: " + gameData.foodPerClickCost + " wood";
-	}
 
 	gatherFoodPerClick(){
 		  if (gameData.foodAmount >= gameData.foodPerClickCost) {
@@ -459,7 +459,6 @@ export class GameLoop {
 	//let currency_per_millisecond = 0.003;
 
 	loop.onUpdate = function(dt, t) {
-		Gathers.gatherFood();
 	  //currency += currency_per_millisecond * dt;
 
 	 //document.getElementById("Time").innerHTML = "Current Playtime: " + "<span class=\"TimeColor\">" + Math.round(t/1000)+" seconds</span>";

@@ -1,24 +1,85 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect ,useRef} from 'react'
 import logo from './logo.svg'
 import './App.css'
-import {gameData} from "./maindata.js"
+import {Gather} from "./maindata.js"
 import {Time, FixBorder} from "./maindata.js"
 import {CloseButton, BuildingsButton, SaveButton, LoadButton, ClearSaveButton, GatherButton} from "./Buttons.jsx"
+import * as Buttons from "./Buttons.jsx"
+import useKeypress from './hooks/useKeypress'
+import ResourceTable from "./ResourceTable"
+import {GatherFood} from "./buttons/GatherFood.jsx"
+import { useSetState } from '@mantine/hooks'
 
 window.addEventListener('load', (event) => {
   FixBorder();
 
 });
 
+const LOCAL_STORAGE_KEY="IncrementalGame.game"
 
 export function App() {
  var [count, setCount] = useState(0);
  var [foodcount, setfoodCount] = useState(0);
+
+ var [gameData, setGameData] = useState(0);
+
+
  const food = localStorage.getItem(gameData["foodAmount"]);
- console.log (gameData["foodAmount"]);
+ const prevCountRef = useRef();
+
+ useEffect(() => {
+	const storedGameData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+	if (storedGameData) setGameData(storedGameData)
+	setGameData((gameData) = ({
+		GameVersion: "v0.0.6",
+		foodAmount: 0,
+		foodPerClick: 25,
+		foodPerClickCost: 25,
+		foodPerClickUpgradeNum: 0,
+		wood: 0,
+		woodPerClick: 25,
+		woodPerClickCost: 25,
+		copper: 0,
+		copperPerClick: 1,
+		copperPerClickCost: 25,
+		copperPerClickUpgradeNum: 0,
+		bronze: 0,
+		bronzePerClick: 1,
+		bronzePerClickUpgradeNum: 0,
+		TotalTime: 0,
+		TotalTimeString: 0
+	}))
+
+}, [])
+
+	useEffect(() => {   setTimeout(() => {
+
+		if (gameData.foodAmount <= 100){
+			var prevfoodamount = gameData.foodAmount;
+			setGameData({ ...gameData, foodAmount:  prevfoodamount + 1 });
+		}
+
+		if (gameData.foodAmount >= 100){
+		setCount((count) => 0);
+		}
+
+   }, 1000)
+	}, [gameData])
 
 
- useEffect(() => {  setfoodCount(gameData["food"]); }, []);
+    
+
+
+    useKeypress('Escape', () => {
+    	Buttons.CloseButton();
+    });
+
+	
+	
+	useEffect(() => {
+		localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(gameData))
+	}, [gameData])
+
 
 /*
   const useMyFirstCustomHook = () => {
@@ -31,7 +92,7 @@ export function App() {
 
 
   return (
-    <>
+<>
     <div className="App">
     <div id="TopOfPageContainer">
     	<div id="header">
@@ -43,42 +104,6 @@ export function App() {
     		<button className="TimeStateButton" id="pause"> Pause </button>
     		<button id="MenuIcon" className="fa-solid fa-bars"></button>
     		</div>
-    	</div>
-
-    	<div>
-    		<table id="Resources">
-
-          <tbody>
-    		  <tr>
-    			<th>Resource</th>
-    			<th>Amount</th>
-    			<th> /S </th>
-    		  </tr>
-    		  <tr>
-    			<th id="food" className="Resource">Food</th>
-    			<th id="foodGathered" className="ResourceGathered">{gameData["foodAmount"]}</th>
-    			<th id="foodGatheredPerSecond" className="ResourcePerSecond"></th>
-
-    		  </tr>
-    		  <tr>
-    			<th id="wood" className="Resource">Wood</th>
-    			<th id="woodCut" className="ResourceGathered">0</th>
-    			<th id="woodCutPerSecond" className="ResourcePerSecond">0</th>
-
-    		  </tr>
-    		  <tr>
-    			<th id="copper" className="Resource">Copper</th>
-    			<th id="copperMined" className="ResourceGathered">0</th>
-    			<th id="copperMinedPerSecond" className="ResourcePerSecond">0</th>
-
-    		  </tr>
-    		  <tr>
-    			<th id="bronze" className="Resource Hidden">Bronze</th>
-    			<th id="bronzeMined Hidden" ></th>
-    			<th id="bronzeMinedPerSecond Hidden" className="PerSecond"></th>
-    		  </tr>
-          </tbody>
-    		</table> <br></br>
     	</div>
 
     	<div className="tabHolder">
@@ -95,7 +120,7 @@ export function App() {
     </div>
 
       <header className="App-header">
-  <div id="MainInteract" className="MainInteract Hidden">
+  	<div id="MainInteract" className="MainInteract Hidden">
 
       <div id="BuildingsContainer" className="Hidden">
       	<div onClick={BuildingsButton} id="Buildings" className="tabcontent MainInteractTitle Hidden inline-flex">
@@ -144,7 +169,7 @@ export function App() {
 
 
 
-    <div id = "Gather" className="tabcontent Hidden">
+  	  <div id = "Gather" className="tabcontent Hidden">
 
       <div id="GatherHeaderContainer">
         <h3 className="tabTitle">Gather</h3>
@@ -152,7 +177,7 @@ export function App() {
       </div>
         		<div className="GatherResource-container">
       			<div className="resource-container">
-      				<button className="ResourceButtons flex-parent" id="gatherFoodButton">Gather Food</button>
+      				<button className="ResourceButtons flex-parent" id="gatherFoodButton" onClick={GatherFood}>Gather Food</button>
       				<button id="foodPerClickUpgrade Hidden">Upgrade Hatchet (Currently Level 1) Cost: 25 wood</button>
       			</div>
 
@@ -222,8 +247,10 @@ export function App() {
       </div>
 
 
-
-    </>
+	<ResourceTable gameData={gameData}/>
+	<Buttons.GatherFoodButton newGameData={gameData} />
+	<GatherFood/>
+</>
   )
 
 }

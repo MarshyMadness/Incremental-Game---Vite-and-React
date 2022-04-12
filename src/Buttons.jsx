@@ -1,4 +1,6 @@
 import {Gather, gameData, startingGameData, save, load, ClearSave} from "./maindata.js"
+import React from "react"
+
 export function SaveButton() {
 	save(gameData);
 	Swal.fire({
@@ -11,7 +13,6 @@ export function SaveButton() {
 export function LoadButton(){
 	load(gameData);
 	if (gameData == null){
-		gameData = startingGameData;
 		Swal.fire({
 		icon: 'warning',
 		title: 'Save File is Null, please Clear Save',
@@ -109,4 +110,11 @@ export function CloseButton(){
   document.getElementById('GatherButton').classList.remove("active");
   document.getElementById('BuildingsButton').classList.remove("active");
   document.getElementById('PeopleButton').classList.remove("active");
+}
+
+export function GatherFood({ gameData }) {
+    setGameData({ ...gameData, foodAmount:  prevfoodamount + 1 });
+    return(
+        <div> Hello </div>
+    )
 }
