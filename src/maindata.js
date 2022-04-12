@@ -1,4 +1,5 @@
 import {useState} from "react"
+import React from 'react'
 
 export var gameData = {
 		GameVersion: "v0.0.6",
@@ -59,7 +60,7 @@ export var gameData = {
 			gameData = startingGameData;
 		}
 
-		document.getElementById('MainInteract').classList.add("Hidden")
+		//document.getElementById('MainInteract').classList.add("Hidden")
 		loop.start();
 
 	}
@@ -69,9 +70,7 @@ export var gameData = {
 	$(document).ready(function() {
 
 
-		$("#foodPerClickUpgrade").click(function(){
-			GatherRunning.gatherFoodPerClick();
-		});
+	
 
 		$( function() {
 
@@ -157,15 +156,6 @@ export var gameData = {
 */
 export class Gather {
 
-	gatherFoodPerClick(){
-		  if (gameData.foodAmount >= gameData.foodPerClickCost) {
-			gameData.wood -= gameData.foodPerClickCost;
-			gameData.foodPerClick += 1;
-			gameData.foodPerClickUpgradeNum += 1;
-			gameData.foodPerClickCost *= 2;
-			document.getElementById("foodPerClickUpgrade").innerHTML = "Upgrade Gathering (Currently Level " + gameData.foodPerClickUpgradeNum + ") Cost: " + gameData.foodPerClickCost + " wood";
-		  }
-	}
 
 	cutWood() {
 		  gameData.wood += gameData.woodPerClick;
@@ -453,7 +443,7 @@ export class GameLoop {
 	}
 
 	const loop = new GameLoop();
-	const Gathers = new Gather();
+	export const Gathers = new Gather();
 
 	//let currency = 0;
 	//let currency_per_millisecond = 0.003;

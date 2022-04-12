@@ -14,7 +14,7 @@
 		button {
 		border-radius: 10px;
 		display: inline-block
-		color:#e0ead9;
+		color #e0ead9;
 		background-color:#787f73;
 		padding: 10px;
 		}
@@ -202,10 +202,9 @@
 		}
 
 		.tablinks button{
-		display: inline-block
+		display: inline-block;
 		border: thick solid black;
-		font-size:1vw;
-
+		font-size: 1rem;
 		}
 
 		#Gatherbutton{
@@ -586,3 +585,5 @@
 			justify-content: space-between;
 			background-color: green;
 		}
+
+		

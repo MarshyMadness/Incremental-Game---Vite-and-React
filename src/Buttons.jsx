@@ -1,4 +1,4 @@
-import {Gather, gameData, startingGameData, save, load, ClearSave} from "./maindata.js"
+import {Gather, Gathers, gameData, startingGameData, save, load, ClearSave} from "./maindata.js"
 import React from "react"
 
 export function SaveButton() {
@@ -112,9 +112,18 @@ export function CloseButton(){
   document.getElementById('PeopleButton').classList.remove("active");
 }
 
+/*
 export function GatherFood({ gameData }) {
+	var prevfoodamount = gameData.foodAmount;
     setGameData({ ...gameData, foodAmount:  prevfoodamount + 1 });
     return(
         <div> Hello </div>
     )
+}
+*/
+
+
+export function foodPerClickUpgrade(){
+	Gathers.gatherFoodPerClick();
+
 }

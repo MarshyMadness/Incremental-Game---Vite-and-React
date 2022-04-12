@@ -21,13 +21,13 @@ export default function ResourceTable( {gameData} ) {
       </tr>
       <tr>
         <th id="wood" className="Resource">Wood</th>
-        <th id="woodCut" className="ResourceGathered">0</th>
+        <th id="woodCut" className="ResourceGathered">{gameData.wood}</th>
         <th id="woodCutPerSecond" className="ResourcePerSecond">0</th>
 
       </tr>
       <tr>
         <th id="copper" className="Resource">Copper</th>
-        <th id="copperMined" className="ResourceGathered">0</th>
+        <th id="copperMined" className="ResourceGathered">{gameData.copper}</th>
         <th id="copperMinedPerSecond" className="ResourcePerSecond">0</th>
 
       </tr>
