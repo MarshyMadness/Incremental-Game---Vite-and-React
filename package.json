@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "homepage": "Incremental-Game---Vite-and-React/",
+=======
+  "homepage": "http://sabesansathananthan.github.io/React-Deploy",
+>>>>>>> f61b6cb4adbdd233d310224d8c1613f6524d2caf
   "name": "vite-react-starter",
   "private": true,
   "version": "0.0.0",
