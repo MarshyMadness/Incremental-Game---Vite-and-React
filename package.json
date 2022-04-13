@@ -1,4 +1,5 @@
 {
+  "homepage": "Incremental-Game---Vite-and-React/",
   "name": "vite-react-starter",
   "private": true,
   "version": "0.0.0",
@@ -34,6 +35,5 @@
     "gh-pages": "^3.2.3",
     "react-dom": "^18.0.0",
     "vite": "^2.9.1"
-  },
-  "homepage": "https://marshymadness.github.io/IncrementalAge"
+  }
 }
