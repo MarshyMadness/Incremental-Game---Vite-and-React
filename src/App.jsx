@@ -5,9 +5,9 @@ import './App.css'
 import {Gather} from "./maindata.js"
 import {Time, FixBorder} from "./maindata.js"
 import * as Buttons from "./Buttons.jsx"
-import useKeyPress from './hooks/useKeyPress'
-import ResourceTable from "./ResourceTable"
-import MainInteract from './MainInteract'
+import useKeyPress from './hooks/useKeyPress.jsx'
+import ResourceTable from "./ResourceTable.jsx"
+import MainInteract from './MainInteract.jsx'
 import { useSetState } from '@mantine/hooks'
 import {TimerApp, MyTimer} from "./Timer.jsx"
 import FoodPerClickUpgrade from "./buttons/foodPerClickUpgrade.jsx"
